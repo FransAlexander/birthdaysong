@@ -1,17 +1,23 @@
-const container = document.querySelector(".container_center")
+const containerMain = document.querySelector(".container_main")
+const containerSong = document.querySelector(".song_container")
+
+const containerFirst = document.createElement("div")
+const containerCenter = document.createElement("div")
+const headerSong = document.createElement("h2")
 const newForm = document.createElement("form")
 const newInput = document.createElement("input")
 const newButton = document.createElement("button")
-const headerText = document.querySelector(".top_text")
-const containerSong = document.querySelector(".header_text")
 
-headerText.textContent = "hi"
 
-containerSong.appendChild(headerText)
 
+containerFirst.classList.add("container")
+containerCenter.classList.add("container_center")
+headerSong.classList.add("header_text")
 newForm.classList.add("date_from")
-newInput.classList.add("input")
 newButton.classList.add("sub_btn")
+newInput.classList.add("input")
+
+headerSong.textContent = "hi"
 
 newInput.setAttribute("placeholder","yy/mm/dd")
 newInput.setAttribute("type","number")
@@ -19,7 +25,11 @@ newForm.setAttribute("type","submit")
 
 newForm.appendChild(newInput)
 newForm.appendChild(newButton)
-container.appendChild(newForm)
+
+containerCenter.appendChild(newForm)
+containerFirst.appendChild(containerCenter)
+containerMain.appendChild(containerFirst)
+
 
 
 
@@ -29,10 +39,17 @@ let btn = document.querySelector(".sub_btn")
 
 
 
+function replaceElement(){
+  containerCenter.remove()
+  containerFirst.appendChild(headerSong)
+}
+replaceElement()
 
-btn.addEventListener("click",()=>{
-  
+
+
+function fiveNine(){
   let inputVal = parseInt(input.value)
+
   if(inputVal>=590101 && inputVal<=590118){
     newForm.setAttribute("action","1959/59jan1-18.html")
   }else if(inputVal>=590119 && inputVal<=590208){
@@ -70,7 +87,13 @@ btn.addEventListener("click",()=>{
   }else if(inputVal>=591228 && inputVal<=591231){
     newForm.setAttribute("action","1959/59dec28-dec31.html")
   }
+
+}
+
+  
+
+
+btn.addEventListener("click",()=>{
+  fiveNine()
 })
-
-
 
